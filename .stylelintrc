@@ -1,0 +1,333 @@
+{
+  defaultSeverity: "warning",
+  extends: "stylelint-config-standard",
+  plugins: ["stylelint-order"],
+  rules: {
+    "at-rule-no-unknown": null,
+    "block-no-empty": true,
+    "block-opening-brace-space-before": "always",
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-named": "never",
+    "color-no-invalid-hex": true,
+    "declaration-bang-space-after": "never",
+    "declaration-bang-space-before": "always",
+    "declaration-block-semicolon-newline-after": "always",
+    "declaration-block-semicolon-space-before": "never",
+    "declaration-block-single-line-max-declarations": 1,
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-colon-space-after": "always-single-line",
+    "declaration-colon-space-before": "never",
+    "function-comma-space-after": "always-single-line",
+    "function-parentheses-space-inside": "never",
+    "function-url-quotes": "always",
+    "indentation": 2,
+    "length-zero-no-unit": true,
+    "no-descending-specificity": null,
+    "no-extra-semicolons": true,
+    "number-leading-zero": "never",
+    "max-empty-lines": 3,
+    "order/order": [
+      [
+        "custom-properties",
+        "dollar-variables",
+        "declarations",
+        "at-rules",
+        "rules"
+      ],
+      {
+        "disableFix": true
+      }
+    ],
+    "order/properties-order": [
+      {
+        "name": "Positioning",
+        "properties": [
+          "position",
+          "top",
+          "right",
+          "bottom",
+          "left",
+          "z-index",
+          "float",
+          "clear"
+        ]
+      },
+      {
+        "name": "Layout",
+        "properties": [
+          "display",
+          "visibility",
+          "opacity"
+        ]
+      },
+      {
+        "name": "Layout: columns",
+        "properties": [
+          "columns",
+          "column-width",
+          "column-count",
+          "column-fill",
+          "column-span",
+          "column-rule",
+          "column-rule-width",
+          "column-rule-style",
+          "column-rule-color"
+        ]
+      },
+      {
+        "name": "Layout: flex",
+        "properties": [
+          "flex",
+          "flex-grow",
+          "flex-shrink",
+          "flex-basis",
+          "flex-direction",
+          "flex-flow",
+          "flex-wrap"
+        ]
+      },
+      {
+        "name": "Layout: grid",
+        "properties": [
+          "grid",
+          "grid-area",
+          "grid-template",
+          "grid-template-areas",
+          "grid-template-rows",
+          "grid-template-columns",
+          "grid-gap",
+          "grid-row-gap",
+          "grid-column-gap",
+          "grid-auto-rows",
+          "grid-auto-columns",
+          "grid-auto-flow",
+          "grid-row",
+          "grid-row-start",
+          "grid-row-end",
+          "grid-column",
+          "grid-column-start",
+          "grid-column-end"
+        ]
+      },
+      {
+        "name": "Layout: align",
+        "properties": [
+          "align-content",
+          "align-items",
+          "align-self",
+          "justify-content",
+          "justify-items",
+          "justify-self",
+          "order"
+        ]
+      },
+      {
+        "name": "Layout: table",
+        "properties": [
+          "table-layout",
+          "border-spacing",
+          "border-collapse",
+          "vertical-align",
+          "empty-cells",
+          "caption-side"
+        ]
+      },
+      {
+        "name": "Box model",
+        "properties": [
+          "box-sizing",
+          "width",
+          "min-width",
+          "max-width",
+          "height",
+          "min-height",
+          "max-height",
+          "margin",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left",
+          "padding",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left",
+          "border",
+          "border-width",
+          "border-style",
+          "border-color",
+          "border-top",
+          "border-top-width",
+          "border-top-style",
+          "border-right",
+          "border-right-width",
+          "border-right-style",
+          "border-bottom",
+          "border-bottom-width",
+          "border-bottom-style",
+          "border-left",
+          "border-left-width",
+          "border-left-style",
+          "border-radius",
+          "border-top-left-radius",
+          "border-top-right-radius",
+          "border-bottom-right-radius",
+          "border-bottom-left-radius",
+          "border-image",
+          "border-image-source",
+          "border-image-slice",
+          "border-image-width",
+          "border-image-outset",
+          "border-image-repeat"
+        ]
+      },
+      {
+        "name": "Box model: clip",
+        "properties": [
+          "clip",
+          "clip-path",
+          "overflow",
+          "overflow-x",
+          "overflow-y"
+        ]
+      },
+      {
+        "name": "Cosmetics",
+        "properties": [
+          "color",
+          "cursor",
+          "box-shadow",
+          "background",
+          "background-clip",
+          "background-color",
+          "background-image",
+          "background-origin",
+          "background-position",
+          "background-position-x",
+          "background-position-y",
+          "background-repeat",
+          "background-size",
+          "background-attachment",
+          "background-blend-mode",
+          "mix-blend-mode",
+          "isolation",
+          "list-style",
+          "list-style-type",
+          "list-style-image",
+          "list-style-position",
+          "outline",
+          "outline-color",
+          "outline-style",
+          "outline-width",
+          "outline-offset",
+          "resize"
+        ]
+      },
+      {
+        "name": "Cosmetics: typography",
+        "properties": [
+          "font",
+          "font-family",
+          "font-size",
+          "font-size-adjust",
+          "font-weight",
+          "font-style",
+          "line-height",
+          "font-stretch",
+          "font-variant",
+          "font-variant",
+          "font-variant-alternates",
+          "font-variant-caps",
+          "font-variant-east-asian",
+          "font-variant-ligatures",
+          "font-variant-numeric",
+          "font-variant-position",
+          "font-variation-settings",
+          "font-feature-settings",
+          "font-kerning",
+          "font-language-override",
+          "font-optical-sizing",
+          "font-synthesis"
+        ]
+      },
+      {
+        "name": "Cosmetics: writing",
+        "properties": [
+          "direction",
+          "letter-spacing",
+          "line-break",
+          "overflow-wrap",
+          "text-align",
+          "text-align-last",
+          "text-indent",
+          "text-justify",
+          "text-size-adjust",
+          "text-transform",
+          "text-overflow",
+          "white-space",
+          "word-break",
+          "word-spacing",
+          "hanging-punctuation",
+          "hyphens",
+          "paint-order",
+          "tab-size"
+        ]
+      },
+      {
+        "name": "Cosmetics: transform",
+        "properties": [
+          "transform",
+          "transform-box",
+          "transform-origin",
+          "transform-style",
+          "backface-visibility",
+          "perspective",
+          "perspective-origin"
+        ]
+      },
+      {
+        "name": "Cosmetics: animation",
+        "properties": [
+          "animation",
+          "animation-name",
+          "animation-duration",
+          "animation-timing-function",
+          "animation-delay",
+          "animation-iteration-count",
+          "animation-direction",
+          "animation-fill-mode",
+          "animation-play-state",
+          "transition",
+          "transition-property",
+          "transition-duration",
+          "transition-timing-function",
+          "transition-delay"
+        ]
+      },
+      {
+        "name": "Misc",
+        "properties": [
+          "content",
+          "counter-increment",
+          "counter-reset",
+          "quotes",
+          "object-fit",
+          "object-position",
+          "pointer-events",
+          "touch-action",
+          "will-change"
+        ]
+      }
+    ],
+    "selector-class-pattern": [
+      "^[a-z0-9\\-_]+$",
+      {
+        message: "Selector should be written in lowercase with hyphens (selector-class-pattern)",
+      },
+    ],
+    "selector-type-no-unknown": null,
+    "selector-list-comma-newline-after": "always",
+    "shorthand-property-no-redundant-values": true,
+  },
+}
