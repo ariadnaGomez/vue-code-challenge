@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your xVue.js App" /> -->
+    <ProductItem :product="product"></ProductItem>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script lang="ts">
+import ProductItem from './ProductItem.vue'
+import { Product } from '@/interfaces/Product'
+import Vue from 'vue'
 
-export default {
+export default Vue.extend({
   name: 'Home',
   components: {
-    HelloWorld,
+    ProductItem,
   },
-}
+  data: (): { product: Product } => ({
+    product: {
+      name: 'Unbranded Metal Chair',
+      description:
+        'Porro tempore autem. Sunt molestias qui quod recusandae nemo quia optio. Nostrum aperiam officiis aut reprehenderit illo.',
+      price: 10,
+      stock: 3,
+      image:
+        'https://dummyimage.com/400x400/28200e/000&text=Unbranded Metal Chair',
+    },
+  }),
+})
 </script>

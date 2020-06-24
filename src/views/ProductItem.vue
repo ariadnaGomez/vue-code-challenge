@@ -1,11 +1,23 @@
 <template>
-  <div>
-    <img :src="product.image" :alt="product.name" />
-    <h2>{{ product.name }}</h2>
-    <p>{{ product.description }}</p>
-    <span>{{ priceWithCurrency }}</span>
-    <span>{{ itemsLeftInStock }}</span>
-  </div>
+  <v-card class="mx-auto" max-width="400">
+    <v-img
+      class="white--text align-end"
+      height="200px"
+      :src="product.image"
+      :alt="product.name"
+    >
+      <v-card-title>{{ product.name }}</v-card-title>
+    </v-img>
+    <v-card-text class="text--primary">
+      <p>{{ product.description }}</p>
+      <div class="d-flex justify-space-between">
+        <span class="text-subtitle-1">{{ itemsLeftInStock }}</span>
+        <span class="text-subtitle-1 font-weight-bold">
+          {{ priceWithCurrency }}
+        </span>
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script lang="ts">

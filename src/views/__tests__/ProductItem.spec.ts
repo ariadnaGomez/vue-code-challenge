@@ -3,27 +3,27 @@ import ProductItem from '@/views/ProductItem.vue'
 
 describe('Product List', () => {
   test("should render the product's name", () => {
-    const product = { name: 'Some interesting product' }
+    const product = { name: 'An interesting product' }
     render(ProductItem, { props: { product } })
 
-    expect(screen.queryByText('Some interesting product')).toBeTruthy()
+    expect(screen.queryByText('An interesting product')).toBeTruthy()
   })
 
   test("should render a product's description", () => {
-    const product = { description: "Some interesting product's description" }
+    const product = { description: "An interesting product's description" }
     render(ProductItem, { props: { product } })
 
     expect(
-      screen.queryByText("Some interesting product's description")
+      screen.queryByText("An interesting product's description")
     ).toBeTruthy()
   })
 
   test("should render a product's description", () => {
-    const product = { description: "Some interesting product's description" }
+    const product = { description: "An interesting product's description" }
     render(ProductItem, { props: { product } })
 
     expect(
-      screen.queryByText("Some interesting product's description")
+      screen.queryByText("An interesting product's description")
     ).toBeTruthy()
   })
 
@@ -45,6 +45,6 @@ describe('Product List', () => {
     const product = { image: 'test-image-url', name: 'The product name' }
     render(ProductItem, { props: { product } })
 
-    expect(screen.queryByAltText('The product name')).toBeTruthy()
+    expect(screen.queryByRole('img')).toBeTruthy()
   })
 })
