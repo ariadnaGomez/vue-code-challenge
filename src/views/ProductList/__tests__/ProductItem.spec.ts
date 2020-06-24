@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/vue'
 import ProductItem from '@/views/ProductList/ProductItem.vue'
 
-describe('Product List', () => {
+describe('ProductItem', () => {
   test("should render the product's name", () => {
     const product = { name: 'An interesting product' }
     render(ProductItem, { props: { product } })
