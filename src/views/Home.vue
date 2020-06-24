@@ -2,7 +2,7 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your xVue.js App" /> -->
-    <ProductItem :product="product"></ProductItem>
+    <ProductItem :product="product" />
   </div>
 </template>
 
