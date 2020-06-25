@@ -26,28 +26,6 @@ describe('CartItem', () => {
     expect(within(productsAddedToCart).queryByText('6')).toBeTruthy()
   })
 
-  test('should increase items added to cart when clicking the plus button', async () => {
-    const product = { addedToCart: 6 }
-    render(CartItem, { props: { product } })
-    const button = screen.getByRole('button', { name: 'add' })
-    fireEvent.click(button)
-    await waitFor(() => {
-      const productsAddedToCart = screen.getByTestId('productsAddedToCart')
-      expect(within(productsAddedToCart).queryByText('7')).toBeTruthy()
-    })
-  })
-
-  test('should decrease items added to cart when clicking the plus button', async () => {
-    const product = { addedToCart: 6 }
-    render(CartItem, { props: { product } })
-    const button = screen.getByRole('button', { name: 'remove' })
-    fireEvent.click(button)
-    await waitFor(() => {
-      const productsAddedToCart = screen.getByTestId('productsAddedToCart')
-      expect(within(productsAddedToCart).queryByText('5')).toBeTruthy()
-    })
-  })
-
   test('should render the product image', () => {
     const product = { image: 'test-image-url', name: 'The product name' }
     render(CartItem, { props: { product } })

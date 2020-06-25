@@ -3,7 +3,7 @@ import ProductList from '../ProductList.vue'
 import { store } from '@/store/storeConfig'
 
 describe('ProductList', () => {
-  it('should render a list of products', async () => {
+  test('should render a list of products', async () => {
     render(ProductList, { store, stubs: ['v-lazy'] })
     await waitFor(() => {
       expect(screen.queryByText('Unbranded Metal Chair')).toBeTruthy()

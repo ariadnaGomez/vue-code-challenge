@@ -11,8 +11,8 @@
       :alt="product.name"
     >
     </v-img>
-    <div>
-      <v-card-title>{{ product.name }}</v-card-title>
+    <div class="flex-grow-1 pa-4">
+      <v-card-title class="pa-0 pb-4">{{ product.name }}</v-card-title>
 
       <v-card-actions>
         <v-icon
@@ -24,7 +24,7 @@
           add
         </v-icon>
         <span data-testid="productsAddedToCart">
-          {{ addedToCartAssembled }}
+          {{ product.addedToCart }}
         </span>
         <v-icon
           role="button"
@@ -56,18 +56,12 @@ export default mixins(PriceWithCurrencyMixin).extend({
       type: Object as PropType<CartProduct>,
     },
   },
-  created() {
-    this.addedToCartAssembled = this.product.addedToCart | 0
-  },
-  data: () => ({
-    addedToCartAssembled: 0,
-  }),
   methods: {
     incrementProductQuantity() {
-      this.addedToCartAssembled++
+      this.$emit('increment-product-quantity')
     },
     decrementProductQuantity() {
-      this.addedToCartAssembled--
+      this.$emit('decrement-product-quantity')
     },
   },
 })
