@@ -9,6 +9,7 @@ function factory() {
         name: apiProduct.productName,
         stock: apiProduct.stock,
         price: apiProduct.price,
+        addedToCart: 0,
       }))
     },
   }

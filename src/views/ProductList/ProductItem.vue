@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Product } from '@/interfaces/Product'
+import { CartProduct } from '@/interfaces/Product'
 import { PropType } from 'vue'
 import mixins from 'vue-typed-mixins'
 import PriceWithCurrencyMixin from '@/mixins/priceWithCurrency'
@@ -31,7 +31,7 @@ export default mixins(PriceWithCurrencyMixin).extend({
   props: {
     product: {
       required: true,
-      type: Object as PropType<Product>,
+      type: Object as PropType<CartProduct>,
     },
   },
   computed: {

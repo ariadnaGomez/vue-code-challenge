@@ -12,7 +12,7 @@ export interface CartProduct extends Product {
 }
 
 export interface ProductModuleState {
-  productList: Array<Product>
+  productList: Array<CartProduct>
 }
 
 export interface ApiProduct {
