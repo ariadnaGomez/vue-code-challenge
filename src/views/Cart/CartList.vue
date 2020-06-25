@@ -1,7 +1,7 @@
 <template>
   <div class="pt-8">
     <CartItem
-      v-for="(product, index) in productList"
+      v-for="(product, index) in productsAddedToCart"
       :key="product.id"
       :product="product"
       @increment-product-quantity="incrementProductQuantity(index)"
@@ -24,25 +24,25 @@
 <script lang="ts">
 import Vue from 'vue'
 import CartItem from './CartItem.vue'
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default Vue.extend({
   name: 'CartList',
   components: { CartItem },
   computed: {
-    ...mapState('products', ['productList']),
-    ...mapGetters('products', ['totalCartPrice']),
+    ...mapGetters('products', ['totalCartPrice', 'productsAddedToCart']),
   },
   async created() {
     this.getProductsList()
   },
   methods: {
     ...mapActions('products', ['getProductsList']),
+    ...mapMutations('products', ['addProductToCart', 'removeProductFromCart']),
     incrementProductQuantity(index: number) {
-      console.log(index)
+      this.addProductToCart(index)
     },
     decrementProductQuantity(index: number) {
-      console.log(index)
+      this.removeProductFromCart(index)
     },
   },
 })

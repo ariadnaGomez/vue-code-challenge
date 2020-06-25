@@ -8,7 +8,7 @@ import {
 } from '@testing-library/vue'
 import CartList from '../CartList.vue'
 
-fdescribe('CartList', () => {
+xdescribe('CartList', () => {
   test('should render a list of products', async () => {
     render(CartList, { store })
     await waitFor(() => {
@@ -17,7 +17,7 @@ fdescribe('CartList', () => {
     })
   })
 
-  test('price should be 0 when no products are added to cart', () => {
+  xtest('price should be 0 when no products are added to cart', () => {
     render(CartList, { store })
     const totalAmountContainer = screen.getByTestId('total-cart-amount')
     expect(within(totalAmountContainer).queryByText('0')).toBeTruthy()
