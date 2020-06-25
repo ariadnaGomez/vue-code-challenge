@@ -2,9 +2,9 @@
   <v-app>
     <v-app-bar app color="primary" dark />
 
-    <v-content>
+    <v-main>
       <router-view />
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -13,11 +13,5 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'App',
-
-  components: {},
-
-  data: () => ({
-    //
-  }),
 })
 </script>
