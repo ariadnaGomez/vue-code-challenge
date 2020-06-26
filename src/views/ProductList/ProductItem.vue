@@ -21,22 +21,20 @@
 </template>
 
 <script lang="ts">
-import { Product } from '@/interfaces/Product'
-import currencyFactory from '@/application/currency'
-import Vue, { PropType } from 'vue'
+import { CartProduct } from '@/interfaces/Product'
+import { PropType } from 'vue'
+import mixins from 'vue-typed-mixins'
+import PriceWithCurrencyMixin from '@/mixins/priceWithCurrency'
 
-export default Vue.extend({
+export default mixins(PriceWithCurrencyMixin).extend({
   name: 'ProductItem',
   props: {
     product: {
       required: true,
-      type: Object as PropType<Product>,
+      type: Object as PropType<CartProduct>,
     },
   },
   computed: {
-    priceWithCurrency(): string {
-      return `${this.product.price}${currencyFactory.currency()}`
-    },
     itemsLeftInStock(): string {
       return `${this.product.stock} left`
     },

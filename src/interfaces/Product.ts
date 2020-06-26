@@ -7,8 +7,12 @@ export interface Product {
   id: string
 }
 
+export interface CartProduct extends Product {
+  addedToCart: number
+}
+
 export interface ProductModuleState {
-  productList: Array<Product>
+  productList: Array<CartProduct>
 }
 
 export interface ApiProduct {

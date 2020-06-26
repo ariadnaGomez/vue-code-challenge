@@ -26,6 +26,7 @@ describe('productAssembler', () => {
         price: 43,
         description:
           'Porro tempore autem. Sunt molestias qui quod recusandae nemo quia optio. Nostrum aperiam officiis aut reprehenderit illo.',
+        addedToCart: 0,
       },
     ])
   })
