@@ -35,10 +35,10 @@ describe('ProductItem', () => {
   })
 
   test('should render how many products are left in stock', () => {
-    const product = { stock: 5 }
+    const product = { stock: 5, addedToCart: 3 }
     render(ProductItem, { props: { product } })
 
-    expect(screen.queryByText('5 left')).toBeTruthy()
+    expect(screen.queryByText('2 left')).toBeTruthy()
   })
 
   test('should render the product image', () => {

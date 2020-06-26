@@ -46,8 +46,11 @@ export default mixins(PriceWithCurrencyMixin).extend({
     },
   },
   computed: {
+    productsLeft(): number {
+      return this.product.stock - this.product.addedToCart
+    },
     itemsLeftInStock(): string {
-      return `${this.product.stock} left`
+      return `${this.productsLeft} left`
     },
     productPrice(): string {
       return this.priceWithCurrency(this.product.price)
