@@ -1,10 +1,4 @@
-import {
-  render,
-  screen,
-  fireEvent,
-  within,
-  waitFor,
-} from '@testing-library/vue'
+import { render, screen, within } from '@testing-library/vue'
 import CartItem from '../CartItem.vue'
 describe('CartItem', () => {
   test('should render the product name in the cart item', () => {

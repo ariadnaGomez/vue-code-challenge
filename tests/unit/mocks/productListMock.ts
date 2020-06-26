@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-export const productListMock = [
+export const productListMock = () => [
   {
     id: '41fd4fd9-95c7-4809-96db-a147d352fdbb',
     image_url:

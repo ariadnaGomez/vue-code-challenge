@@ -1,20 +1,21 @@
-import { ProductModuleState } from '@/interfaces/Product'
+import { ProductState } from '@/interfaces/Product'
+import { GetterTree } from 'vuex'
 
-function factory() {
+function factory(): GetterTree<ProductState, ProductState> {
   return {
-    totalCartPrice(state: ProductModuleState) {
+    totalCartPrice(state: ProductState) {
       return state.productList.reduce((previousValue, currentValue) => {
         return previousValue + currentValue.addedToCart * currentValue.price
       }, 0)
     },
-    hasAvailableStock(state: ProductModuleState) {
+    hasAvailableStock(state: ProductState) {
       return (index: number) => {
         return (
           state.productList[index].addedToCart < state.productList[index].stock
         )
       }
     },
-    productsAddedToCart(state: ProductModuleState) {
+    productsAddedToCart(state: ProductState) {
       return state.productList.filter(product => !!product.addedToCart)
     },
   }

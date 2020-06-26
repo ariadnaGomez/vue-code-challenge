@@ -1,10 +1,10 @@
-import { render, screen, waitFor } from '@testing-library/vue'
+import { screen, waitFor } from '@testing-library/vue'
 import ProductList from '../ProductList.vue'
-import { store } from '@/store/storeConfig'
+import { renderWithStore } from '@/../tests/unit/utils'
 
 describe('ProductList', () => {
   test('should render a list of products', async () => {
-    render(ProductList, { store, stubs: ['v-lazy'] })
+    renderWithStore(ProductList)
     await waitFor(() => {
       expect(screen.queryByText('Unbranded Metal Chair')).toBeTruthy()
       expect(screen.queryByText('Handcrafted Metal Towels')).toBeTruthy()

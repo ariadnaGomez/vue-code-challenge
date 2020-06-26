@@ -17,6 +17,17 @@
         </span>
       </div>
     </v-card-text>
+    <v-btn
+      role="button"
+      name="addToCart"
+      @click="addProductToCart"
+      @onKeyDown="addProductToCart"
+    >
+      <v-icon>
+        add
+      </v-icon>
+      Add
+    </v-btn>
   </v-card>
 </template>
 
@@ -37,6 +48,11 @@ export default mixins(PriceWithCurrencyMixin).extend({
   computed: {
     itemsLeftInStock(): string {
       return `${this.product.stock} left`
+    },
+  },
+  methods: {
+    addProductToCart() {
+      this.$emit('add-product-to-cart')
     },
   },
 })

@@ -11,7 +11,7 @@ export interface CartProduct extends Product {
   addedToCart: number
 }
 
-export interface ProductModuleState {
+export interface ProductState {
   productList: Array<CartProduct>
 }
 
