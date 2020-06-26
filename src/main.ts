@@ -6,12 +6,6 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
-// console.log('lalala')
-// if (process.env.VUE_APP_MOCKS_ENABLED === 'true') {
-// console.log('asd')
-// require('./mocks')
-// }
-
 new Vue({
   router,
   store,

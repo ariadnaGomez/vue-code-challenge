@@ -6,7 +6,7 @@ import { productListMock } from './productListMock'
 const endpoint = `${apiEndpoints.basePath}${apiEndpoints.grocery}`
 const mocks = [
   rest.get(endpoint, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(productListMock))
+    return res(ctx.status(200), ctx.json(productListMock()))
   }),
 ]
 const server = setupServer(...mocks)

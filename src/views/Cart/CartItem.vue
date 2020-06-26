@@ -17,7 +17,7 @@
       <v-card-actions>
         <v-icon
           role="button"
-          name="add"
+          name="incrementQuantity"
           @click="incrementProductQuantity"
           @onKeyDown="incrementProductQuantity"
         >
@@ -28,7 +28,7 @@
         </span>
         <v-icon
           role="button"
-          name="remove"
+          name="decrementQuantity"
           @click="decrementProductQuantity"
           @onKeyDown="decrementProductQuantity"
         >

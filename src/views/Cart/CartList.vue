@@ -1,11 +1,11 @@
 <template>
   <div class="pt-8">
     <CartItem
-      v-for="(product, index) in productsAddedToCart"
+      v-for="product in productsAddedToCart"
       :key="product.id"
       :product="product"
-      @increment-product-quantity="incrementProductQuantity(index)"
-      @decrement-product-quantity="decrementProductQuantity(index)"
+      @increment-product-quantity="incrementProductQuantity(product.id)"
+      @decrement-product-quantity="decrementProductQuantity(product.id)"
     />
     <div
       data-testid="total-cart-amount"
@@ -24,25 +24,21 @@
 <script lang="ts">
 import Vue from 'vue'
 import CartItem from './CartItem.vue'
-import { mapGetters, mapActions, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default Vue.extend({
   name: 'CartList',
   components: { CartItem },
   computed: {
-    ...mapGetters('products', ['totalCartPrice', 'productsAddedToCart']),
-  },
-  async created() {
-    this.getProductsList()
+    ...mapGetters(['totalCartPrice', 'productsAddedToCart']),
   },
   methods: {
-    ...mapActions('products', ['getProductsList']),
-    ...mapMutations('products', ['addProductToCart', 'removeProductFromCart']),
-    incrementProductQuantity(index: number) {
-      this.addProductToCart(index)
+    ...mapMutations(['increaseProductQuantity', 'decreaseProductQuantity']),
+    incrementProductQuantity(id: string) {
+      this.increaseProductQuantity(id)
     },
-    decrementProductQuantity(index: number) {
-      this.removeProductFromCart(index)
+    decrementProductQuantity(id: string) {
+      this.decreaseProductQuantity(id)
     },
   },
 })
