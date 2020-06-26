@@ -57,11 +57,8 @@ export default mixins(PriceWithCurrencyMixin).extend({
     },
   },
   computed: {
-    totalProductPrice(): number {
-      return this.product.price * this.product.addedToCart
-    },
     productPriceWithCurrency(): string {
-      return this.priceWithCurrency(this.totalProductPrice)
+      return this.priceWithCurrency(this.product.totalPrice)
     },
   },
   methods: {

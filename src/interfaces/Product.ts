@@ -5,14 +5,15 @@ export interface Product {
   price: number
   image: string
   id: string
-}
-
-export interface CartProduct extends Product {
   addedToCart: number
 }
 
+export interface CartProduct extends Product {
+  totalPrice: number
+}
+
 export interface ProductState {
-  productList: Array<CartProduct>
+  productList: Array<Product>
 }
 
 export interface ApiProduct {

@@ -1,13 +1,13 @@
-import { CartProduct } from '@/interfaces/Product'
+import { Product, CartProduct } from '@/interfaces/Product'
 
 function factory() {
   return {
     calculateTotalCartPrice(productList: CartProduct[]) {
       return productList.reduce((previousValue, currentValue) => {
-        return previousValue + this.calculateTotalProductPrice(currentValue)
+        return previousValue + currentValue.totalPrice
       }, 0)
     },
-    calculateTotalProductPrice(product: CartProduct) {
+    calculateTotalProductPrice(product: Product) {
       return product.price * product.addedToCart
     },
   }

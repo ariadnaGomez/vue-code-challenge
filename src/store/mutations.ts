@@ -1,7 +1,7 @@
-import { CartProduct, ProductState } from '@/interfaces/Product'
+import { Product, ProductState } from '@/interfaces/Product'
 function factory() {
   return {
-    setProductList(state: ProductState, productList: Array<CartProduct>) {
+    setProductList(state: ProductState, productList: Array<Product>) {
       state.productList = productList
     },
     increaseProductQuantityInCart(state: ProductState, index: number) {
