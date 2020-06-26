@@ -13,7 +13,7 @@
     >
       <span>Total Amount</span>
       <v-spacer></v-spacer>
-      <span>{{ totalCartPrice }}</span>
+      <span>{{ totalPriceWithCurrency }}</span>
     </div>
     <v-footer class="amber justify-center py-4">
       <v-btn min-width="200px">Checkout</v-btn>
@@ -22,23 +22,27 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import CartItem from './CartItem.vue'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import mixins from 'vue-typed-mixins'
+import PriceWithCurrencyMixin from '@/mixins/priceWithCurrency'
 
-export default Vue.extend({
+export default mixins(PriceWithCurrencyMixin).extend({
   name: 'CartList',
   components: { CartItem },
   computed: {
     ...mapGetters(['totalCartPrice', 'productsAddedToCart']),
+    totalPriceWithCurrency(): string {
+      return this.priceWithCurrency(this.totalCartPrice)
+    },
   },
   methods: {
-    ...mapMutations(['increaseProductQuantity', 'decreaseProductQuantity']),
+    ...mapActions(['addProductToCart', 'removeProductFromCart']),
     incrementProductQuantity(id: string) {
-      this.increaseProductQuantity(id)
+      this.addProductToCart(id)
     },
     decrementProductQuantity(id: string) {
-      this.decreaseProductQuantity(id)
+      this.removeProductFromCart(id)
     },
   },
 })

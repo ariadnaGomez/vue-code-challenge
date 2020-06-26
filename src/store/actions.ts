@@ -15,6 +15,27 @@ function factory() {
         return error
       }
     },
+    addProductToCart(
+      { commit, getters }: ActionContext<ProductState, {}>,
+      productId: string
+    ) {
+      const index = getters.getProductIndexById(productId)
+
+      const hasAvailableStock = getters.hasAvailableStock(index)
+      if (hasAvailableStock) {
+        commit('increaseProductQuantityInCart', index)
+      }
+    },
+    removeProductFromCart(
+      { commit, getters }: ActionContext<ProductState, {}>,
+      productId: string
+    ) {
+      const index = getters.getProductIndexById(productId)
+      const productIsInCart = getters.productIsInCart(index)
+      if (productIsInCart) {
+        commit('decreaseProductQuantityInCart', index)
+      }
+    },
   }
 }
 

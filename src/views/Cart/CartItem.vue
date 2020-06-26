@@ -37,7 +37,7 @@
       </v-card-actions>
     </div>
     <v-card-subtitle class="indigo--text text-subtitle-1">{{
-      priceWithCurrency
+      productPriceWithCurrency
     }}</v-card-subtitle>
   </v-card>
 </template>
@@ -54,6 +54,14 @@ export default mixins(PriceWithCurrencyMixin).extend({
     product: {
       required: true,
       type: Object as PropType<CartProduct>,
+    },
+  },
+  computed: {
+    totalProductPrice(): number {
+      return this.product.price * this.product.addedToCart
+    },
+    productPriceWithCurrency(): string {
+      return this.priceWithCurrency(this.totalProductPrice)
     },
   },
   methods: {

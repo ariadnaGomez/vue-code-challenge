@@ -8,9 +8,9 @@ describe('CartItem', () => {
   })
 
   test('should render the products price', () => {
-    const product = { price: 10 }
+    const product = { price: 10, addedToCart: 5 }
     render(CartItem, { props: { product } })
-    expect(screen.queryByText('10$')).toBeTruthy()
+    expect(screen.queryByText('50$')).toBeTruthy()
   })
 
   test('should render how many products have been added to cart', () => {

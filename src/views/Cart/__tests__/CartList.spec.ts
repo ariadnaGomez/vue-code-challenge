@@ -6,6 +6,6 @@ describe('CartList', () => {
   test('price should be 0 when no products are added to cart', () => {
     renderWithStore(CartList)
     const totalAmountContainer = screen.getByTestId('total-cart-amount')
-    expect(within(totalAmountContainer).queryByText('0')).toBeTruthy()
+    expect(within(totalAmountContainer).queryByText('0$')).toBeTruthy()
   })
 })

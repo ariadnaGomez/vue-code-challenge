@@ -13,7 +13,7 @@
       <div class="d-flex justify-space-between">
         <span class="text-subtitle-1">{{ itemsLeftInStock }}</span>
         <span class="text-subtitle-1 font-weight-bold">
-          {{ priceWithCurrency }}
+          {{ productPrice }}
         </span>
       </div>
     </v-card-text>
@@ -48,6 +48,9 @@ export default mixins(PriceWithCurrencyMixin).extend({
   computed: {
     itemsLeftInStock(): string {
       return `${this.product.stock} left`
+    },
+    productPrice(): string {
+      return this.priceWithCurrency(this.product.price)
     },
   },
   methods: {
