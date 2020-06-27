@@ -9,9 +9,11 @@
       <v-card-title>{{ product.name }}</v-card-title>
     </v-img>
     <v-card-text class="text--primary">
-      <p>{{ product.description }}</p>
+      <p class="d-none d-sm-block">{{ product.description }}</p>
       <div class="d-flex justify-space-between">
-        <span class="text-subtitle-1">{{ itemsLeftInStock }}</span>
+        <span class="text-subtitle-1 d-none d-sm-block">{{
+          itemsLeftInStock
+        }}</span>
         <span class="text-subtitle-1 font-weight-bold">
           {{ productPrice }}
         </span>

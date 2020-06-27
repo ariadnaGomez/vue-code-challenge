@@ -1,7 +1,9 @@
 import { screen, fireEvent, within } from '@testing-library/vue'
 import Home from '../Home.vue'
 import { renderWithStore } from '@/../tests/unit/utils'
-
+import Vuetify from 'vuetify'
+import Vue from 'vue'
+Vue.use(Vuetify)
 async function addProductToCart(index: number) {
   const addToCartButton = await screen.findAllByRole('button', {
     name: 'Add',
@@ -26,13 +28,13 @@ function increaseCartQuatity() {
 describe('Home', () => {
   test('should update items on the cart when adding and removing items', async () => {
     renderWithStore(Home)
-    await addProductToCart(1)
+    await addProductToCart(0)
 
-    let productNameItems = screen.getAllByText('Unbranded Metal Chair')
-    expect(productNameItems.length).toEqual(1)
+    let productNameItems = await screen.findAllByText('Unbranded Metal Chair')
+    expect(productNameItems.length).toEqual(2)
 
     await decreaseCartQuatity()
-    productNameItems = screen.getAllByText('Unbranded Metal Chair')
+    productNameItems = await screen.findAllByText('Unbranded Metal Chair')
 
     expect(productNameItems.length).toEqual(1)
   })

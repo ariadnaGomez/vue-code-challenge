@@ -2,11 +2,12 @@
   <v-card
     class="mx-auto d-flex justify-space-between"
     height="100%"
-    max-width="500px"
+    max-width="400px"
+    max-height="190px"
   >
     <v-img
       class="white--text align-end"
-      max-width="150px"
+      max-width="80px"
       :src="product.image"
       :alt="product.name"
     >

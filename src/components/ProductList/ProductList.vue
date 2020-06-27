@@ -4,7 +4,7 @@
       <v-col
         v-for="product in productList"
         :key="product.id"
-        class="col-6 col-md-4 col-lg-3"
+        class="col-6 col-sm-12 col-md-6 col-lg-4 col-xl-3"
       >
         <v-lazy height="100%" transition="fade-transition">
           <ProductItem
@@ -28,11 +28,9 @@ export default Vue.extend({
   computed: {
     ...mapState(['productList']),
   },
-  async created() {
-    this.getProductsList()
-  },
+
   methods: {
-    ...mapActions(['getProductsList', 'addProductToCart']),
+    ...mapActions(['addProductToCart']),
   },
 })
 </script>

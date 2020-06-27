@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/vue'
-import ProductItem from '@/views/ProductList/ProductItem.vue'
+import ProductItem from '@/components/ProductList/ProductItem.vue'
 
 describe('ProductItem', () => {
   test("should render the product's name", () => {
