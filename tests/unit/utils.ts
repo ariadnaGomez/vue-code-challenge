@@ -11,6 +11,6 @@ export function renderWithStore<V extends Vue>(
   }
   render(component, {
     store: { ...store, ...resetState, ...customStore },
-    stubs: ['v-lazy'],
+    stubs: ['v-lazy', 'v-toolbar'],
   })
 }

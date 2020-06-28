@@ -1,22 +1,40 @@
-import { ProductState } from '@/interfaces/Product'
+import { ProductState, CartProduct } from '@/interfaces/Product'
 import { GetterTree } from 'vuex'
+import pricesCalculator from '@/application/pricesCalculator'
 
 function factory(): GetterTree<ProductState, ProductState> {
   return {
-    totalCartPrice(state: ProductState) {
-      return state.productList.reduce((previousValue, currentValue) => {
-        return previousValue + currentValue.addedToCart * currentValue.price
-      }, 0)
+    totalCartPrice(state: ProductState, getters) {
+      return pricesCalculator.calculateTotalCartPrice(
+        getters.productsAddedToCart
+      )
+    },
+    productsAddedToCart(state: ProductState) {
+      return state.productList
+        .filter(product => !!product.addedToCart)
+        .map(
+          (product): CartProduct => ({
+            ...product,
+            totalPrice: pricesCalculator.calculateTotalProductPrice(product),
+          })
+        )
+    },
+    getProductIndexById(state: ProductState) {
+      return (productId: string) => {
+        return state.productList.findIndex(product => product.id === productId)
+      }
     },
     hasAvailableStock(state: ProductState) {
       return (index: number) => {
         return (
-          state.productList[index].addedToCart < state.productList[index].stock
+          state.productList[index].stock > state.productList[index].addedToCart
         )
       }
     },
-    productsAddedToCart(state: ProductState) {
-      return state.productList.filter(product => !!product.addedToCart)
+    productIsInCart(state: ProductState) {
+      return (index: number) => {
+        return state.productList[index].addedToCart > 0
+      }
     },
   }
 }

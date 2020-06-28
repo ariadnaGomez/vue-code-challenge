@@ -9,11 +9,13 @@
       <v-card-title>{{ product.name }}</v-card-title>
     </v-img>
     <v-card-text class="text--primary">
-      <p>{{ product.description }}</p>
+      <p class="d-none d-sm-block">{{ product.description }}</p>
       <div class="d-flex justify-space-between">
-        <span class="text-subtitle-1">{{ itemsLeftInStock }}</span>
+        <span class="text-subtitle-1 d-none d-sm-block">{{
+          itemsLeftInStock
+        }}</span>
         <span class="text-subtitle-1 font-weight-bold">
-          {{ priceWithCurrency }}
+          {{ productPrice }}
         </span>
       </div>
     </v-card-text>
@@ -32,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { CartProduct } from '@/interfaces/Product'
+import { Product } from '@/interfaces/Product'
 import { PropType } from 'vue'
 import mixins from 'vue-typed-mixins'
 import PriceWithCurrencyMixin from '@/mixins/priceWithCurrency'
@@ -42,12 +44,18 @@ export default mixins(PriceWithCurrencyMixin).extend({
   props: {
     product: {
       required: true,
-      type: Object as PropType<CartProduct>,
+      type: Object as PropType<Product>,
     },
   },
   computed: {
+    productsLeft(): number {
+      return this.product.stock - this.product.addedToCart
+    },
     itemsLeftInStock(): string {
-      return `${this.product.stock} left`
+      return `${this.productsLeft} left`
+    },
+    productPrice(): string {
+      return this.priceWithCurrency(this.product.price)
     },
   },
   methods: {

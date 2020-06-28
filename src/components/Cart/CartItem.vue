@@ -2,11 +2,12 @@
   <v-card
     class="mx-auto d-flex justify-space-between"
     height="100%"
-    max-width="500px"
+    max-width="400px"
+    max-height="190px"
   >
     <v-img
       class="white--text align-end"
-      max-width="150px"
+      max-width="80px"
       :src="product.image"
       :alt="product.name"
     >
@@ -37,7 +38,7 @@
       </v-card-actions>
     </div>
     <v-card-subtitle class="indigo--text text-subtitle-1">{{
-      priceWithCurrency
+      productPriceWithCurrency
     }}</v-card-subtitle>
   </v-card>
 </template>
@@ -54,6 +55,11 @@ export default mixins(PriceWithCurrencyMixin).extend({
     product: {
       required: true,
       type: Object as PropType<CartProduct>,
+    },
+  },
+  computed: {
+    productPriceWithCurrency(): string {
+      return this.priceWithCurrency(this.product.totalPrice)
     },
   },
   methods: {
