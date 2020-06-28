@@ -10,6 +10,12 @@ function factory() {
     decreaseProductQuantityInCart(state: ProductState, index: number) {
       state.productList[index].addedToCart--
     },
+    showFavoritesList(state: ProductState) {
+      state.showFavoritesList = !state.showFavoritesList
+    },
+    addToFavoritesList(state: ProductState, index: number) {
+      state.productList[index].favorite = !state.productList[index].favorite
+    },
   }
 }
 

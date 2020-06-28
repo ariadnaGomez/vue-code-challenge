@@ -1,7 +1,12 @@
 <template>
   <div v-resize="calculateIsMobileSize" class="responsive-layout pa-4">
     <div v-show="showFirstColumn" class="column">
-      <AppToolbar :title="firstColumnTitle" @navigate="activateColumn" />
+      <AppToolbar
+        :title="firstColumnTitle"
+        :show-favorites-button="true"
+        @navigate="activateColumn"
+        @show-favorites="showFavoritesList"
+      />
       <slot name="firstColumn"></slot>
     </div>
     <div v-show="showSecondColumn" class="column">
@@ -45,6 +50,9 @@ export default Vue.extend({
     },
     activateColumn() {
       this.firstColumnActive = !this.firstColumnActive
+    },
+    showFavoritesList() {
+      this.$emit('show-favorites')
     },
   },
 })

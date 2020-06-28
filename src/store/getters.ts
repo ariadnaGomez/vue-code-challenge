@@ -36,6 +36,15 @@ function factory(): GetterTree<ProductState, ProductState> {
         return state.productList[index].addedToCart > 0
       }
     },
+    productsInProductList(state: ProductState, getters) {
+      if (state.showFavoritesList) {
+        return getters.filteredProductListByFavorite
+      }
+      return state.productList
+    },
+    filteredProductListByFavorite(state: ProductState) {
+      return state.productList.filter(product => product.favorite)
+    },
   }
 }
 

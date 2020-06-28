@@ -10,6 +10,7 @@ function factory() {
         stock: apiProduct.stock,
         price: apiProduct.price,
         addedToCart: 0,
+        favorite: !!apiProduct.favorite,
       }))
     },
   }

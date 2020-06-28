@@ -6,6 +6,7 @@ export interface Product {
   image: string
   id: string
   addedToCart: number
+  favorite: boolean
 }
 
 export interface CartProduct extends Product {
@@ -14,6 +15,7 @@ export interface CartProduct extends Product {
 
 export interface ProductState {
   productList: Array<Product>
+  showFavoritesList: boolean
 }
 
 export interface ApiProduct {

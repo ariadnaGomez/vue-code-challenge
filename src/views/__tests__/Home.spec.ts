@@ -1,13 +1,17 @@
-import { screen, fireEvent, within } from '@testing-library/vue'
+import {
+  screen,
+  waitFor,
+  fireEvent,
+  within,
+  waitForElementToBeRemoved,
+} from '@testing-library/vue'
 import Home from '../Home.vue'
 import { renderWithStore } from '@/../tests/unit/utils'
 import Vuetify from 'vuetify'
 import Vue from 'vue'
 Vue.use(Vuetify)
 async function addProductToCart(index: number) {
-  const addToCartButton = await screen.findAllByRole('button', {
-    name: 'Add',
-  })
+  const addToCartButton = await screen.findAllByTestId('addToCart')
   await fireEvent.click(addToCartButton[index])
 }
 
@@ -97,5 +101,61 @@ describe('Home', () => {
     await addProductToCart(0)
     const productsAddedToCart = screen.getAllByTestId('productsAddedToCart')
     expect(within(productsAddedToCart[0]).queryByText('8')).toBeTruthy()
+  })
+
+  test('should show favorites list when clicking button', async () => {
+    renderWithStore(Home)
+    const favoritesButton = await screen.findByTestId('show-favorites-button')
+    await fireEvent.click(favoritesButton)
+    await waitFor(() =>
+      expect(
+        screen.queryByText('Handcrafted Metal Towels')
+      ).not.toBeInTheDocument()
+    )
+  })
+
+  test("should add to favorite list when clicking product's item favorite button", async () => {
+    renderWithStore(Home)
+    const addToFavoritesButton = await screen.findAllByTestId(
+      'add-favorites-button'
+    )
+    await fireEvent.click(addToFavoritesButton[1])
+    const showFavoritesButton = await screen.findByTestId(
+      'show-favorites-button'
+    )
+    await fireEvent.click(showFavoritesButton)
+    await waitFor(() =>
+      expect(screen.queryByText('Handcrafted Metal Towels')).toBeInTheDocument()
+    )
+  })
+
+  test("should remove from favorite list when clicking product's item favorite button", async () => {
+    renderWithStore(Home)
+    const favoritesButton = await screen.findByTestId('show-favorites-button')
+    await fireEvent.click(favoritesButton)
+    const addToFavoritesButton = await screen.findAllByTestId(
+      'add-favorites-button'
+    )
+    await fireEvent.click(addToFavoritesButton[0])
+    expect(
+      screen.queryByText('Handcrafted Metal Towels')
+    ).not.toBeInTheDocument()
+  })
+
+  test('should show border icon when product is not favorite', async () => {
+    renderWithStore(Home)
+    const addToFavoritesButton = await screen.findAllByTestId(
+      'add-favorites-button'
+    )
+    expect(addToFavoritesButton[1].textContent).toEqual('favorite_border')
+  })
+
+  test('should switch to normal icon when product is favorite', async () => {
+    renderWithStore(Home)
+    const addToFavoritesButton = await screen.findAllByTestId(
+      'add-favorites-button'
+    )
+    await fireEvent.click(addToFavoritesButton[1])
+    expect(addToFavoritesButton[1].textContent).toEqual('favorite')
   })
 })
