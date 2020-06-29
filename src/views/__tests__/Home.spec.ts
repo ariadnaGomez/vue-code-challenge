@@ -1,10 +1,4 @@
-import {
-  screen,
-  waitFor,
-  fireEvent,
-  within,
-  waitForElementToBeRemoved,
-} from '@testing-library/vue'
+import { screen, waitFor, fireEvent, within } from '@testing-library/vue'
 import Home from '../Home.vue'
 import { renderWithStore } from '@/../tests/unit/utils'
 import Vuetify from 'vuetify'
