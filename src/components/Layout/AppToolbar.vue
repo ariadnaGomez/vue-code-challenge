@@ -12,6 +12,15 @@
     <v-toolbar-title>
       {{ title }}
     </v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn
+      v-if="showFavoritesButton"
+      icon
+      data-testid="show-favorites-button"
+      @click="showFavoritesList"
+    >
+      <v-icon>favorite</v-icon>
+    </v-btn>
   </v-toolbar>
 </template>
 
@@ -25,10 +34,17 @@ export default Vue.extend({
       type: String,
       default: '',
     },
+    showFavoritesButton: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     navigate() {
       this.$emit('navigate')
+    },
+    showFavoritesList() {
+      this.$emit('show-favorites')
     },
   },
 })

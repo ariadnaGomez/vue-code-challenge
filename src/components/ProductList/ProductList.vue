@@ -2,7 +2,7 @@
   <v-container class="grey lighten-5">
     <v-row>
       <v-col
-        v-for="product in productList"
+        v-for="product in productsInProductList"
         :key="product.id"
         class="col-6 col-sm-12 col-md-6 col-lg-4 col-xl-3"
       >
@@ -10,6 +10,7 @@
           <ProductItem
             :product="product"
             @add-product-to-cart="addProductToCart(product.id)"
+            @add-to-favorites-list="addToFavoriteList(product.id)"
           />
         </v-lazy>
       </v-col>
@@ -20,17 +21,17 @@
 <script lang="ts">
 import ProductItem from './ProductItem.vue'
 import Vue from 'vue'
-import { mapState, mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default Vue.extend({
   name: 'ProductList',
   components: { ProductItem },
   computed: {
-    ...mapState(['productList']),
+    ...mapGetters(['productsInProductList']),
   },
 
   methods: {
-    ...mapActions(['addProductToCart']),
+    ...mapActions(['addProductToCart', 'addToFavoriteList']),
   },
 })
 </script>

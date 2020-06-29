@@ -36,6 +36,13 @@ function factory() {
         commit('decreaseProductQuantityInCart', index)
       }
     },
+    addToFavoriteList(
+      { commit, getters }: ActionContext<ProductState, {}>,
+      productId: string
+    ) {
+      const index = getters.getProductIndexById(productId)
+      commit('addToFavoritesList', index)
+    },
   }
 }
 

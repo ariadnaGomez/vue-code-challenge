@@ -2,6 +2,7 @@
   <ResponsiveLayout
     first-column-title="Product List"
     second-column-title="Cart"
+    @show-favorites="showFavoritesList"
   >
     <template v-slot:firstColumn>
       <ProductList />
@@ -17,7 +18,7 @@ import ResponsiveLayout from '../components/Layout/ResponsiveLayout.vue'
 import CartList from '../components/Cart/CartList.vue'
 import ProductList from '../components/ProductList/ProductList.vue'
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 
 export default Vue.extend({
   name: 'Home',
@@ -31,6 +32,7 @@ export default Vue.extend({
   },
   methods: {
     ...mapActions(['getProductsList']),
+    ...mapMutations(['showFavoritesList']),
   },
 })
 </script>

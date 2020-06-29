@@ -10,5 +10,6 @@ export const store: StoreOptions<ProductState> = {
   getters,
   state: {
     productList: [],
+    showFavoritesList: false,
   },
 }
