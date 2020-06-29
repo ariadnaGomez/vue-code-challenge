@@ -1,5 +1,5 @@
 <template>
-  <div v-resize="calculateIsMobileSize" class="responsive-layout pa-4">
+  <div v-resize="calculateIsMobileSize" class="responsive-layout">
     <div v-show="showFirstColumn" class="column">
       <AppToolbar
         :title="firstColumnTitle"
@@ -63,12 +63,13 @@ export default Vue.extend({
   .responsive-layout {
     display: grid;
     grid-template-columns: 1fr 300px;
-    column-gap: 50px;
+
+    /* column-gap: 50px; */
   }
 }
 
 .column {
-  height: calc(100vh - 32px);
+  height: 100vh;
   overflow: auto;
 }
 </style>

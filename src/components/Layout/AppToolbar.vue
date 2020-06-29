@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar>
+  <v-toolbar class="main-toolbar" color="indigo" dark>
     <v-btn
       icon
       class="d-sm-none"
@@ -49,3 +49,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+@media screen and (min-width: 600px) {
+  .main-toolbar {
+    border-left: 1px solid #fff;
+  }
+}
+</style>

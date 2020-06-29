@@ -3,6 +3,7 @@
     <CartItem
       v-for="product in productsAddedToCart"
       :key="product.id"
+      class="pa-2 pa-sm-0"
       :product="product"
       @increment-product-quantity="incrementProductQuantity(product.id)"
       @decrement-product-quantity="decrementProductQuantity(product.id)"
@@ -16,7 +17,7 @@
         <v-spacer></v-spacer>
         <span>{{ totalPriceWithCurrency }}</span>
       </div>
-      <v-footer class="primary justify-center py-4">
+      <v-footer class="indigo justify-center py-4">
         <v-btn min-width="200px">Checkout</v-btn>
       </v-footer>
     </div>
@@ -52,8 +53,13 @@ export default mixins(PriceWithCurrencyMixin).extend({
 
 <style lang="postcss" scoped>
 .cart-container {
-  width: 300px;
-  height: calc(100% - 64px);
-  margin: auto;
+  height: calc(100% - 56px);
+}
+
+@media screen and (min-width: 600px) {
+  .cart-container {
+    width: 300px;
+    margin: auto;
+  }
 }
 </style>
