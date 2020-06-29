@@ -1,34 +1,64 @@
-# vue-code-challenge
+# Vue Code Chanllenge
 
-## Project setup
-```
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Test](#test)
+4. [Mocks](#mocks)
+5. [Static Code Analysis](#validation)
+
+## Installation
+
+Install the dependencies.
+
+```bash
+# Install repo dependencies
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+## Usage
+
+```bash
+# Launch app
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+## Test 🧪
+
+### Unit Testing 🧪
+
+Unit tests are executed is prepush hook.
+
+```bash
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests and update coverage
+npm run test:coverage
 ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
+Vue testing library has been used to avoid testing implementation details. More info about this library can be found in: [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro)
 
-### Run your end-to-end tests
-```
+### E2E Testing 🧪
+
+#### Cypress 🌲
+
+In order e2e tests to pass, server api should be running.
+
+```bash
 npm run test:e2e
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+Cypress testing library has also been used. [Cypress testing library](https://testing-library.com/docs/cypress-testing-library/intro)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Mocks
+
+To avoid mocking server requests in unit tests MSW library has been installed. It intercepts http requests. More info in [MSW](https://mswjs.io/)
+
+## Static Code Analysis
+
+Code is verified and formatted in precommit and prepush hooks. It uses eslint, prettier and stylelint.
+Autofixable rules are applied and added to commits with lint-staged.
+
+Commits are also formatted following the Conventional Commits specification.
