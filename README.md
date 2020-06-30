@@ -28,14 +28,12 @@ npm run serve
 
 ### Unit Testing 🧪
 
-Unit tests are executed is prepush hook.
+Unit tests are executed in pre-push hook.
 
 ```bash
-# Run tests in watch mode
-npm run test:watch
+# Run tests
+npm run test:unit
 
-# Run tests and update coverage
-npm run test:coverage
 ```
 
 Vue testing library has been used to avoid testing implementation details. More info about this library can be found in: [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro)
